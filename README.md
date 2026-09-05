@@ -1,7 +1,6 @@
 # johnmaliha.github.io
 
-Personal portfolio / CV for John Maliha — [Astro](https://astro.build) for the
-static shell, React islands only where the page is actually interactive.
+Personal portfolio / CV for John Maliha!
 
 ## Stack
 
@@ -24,11 +23,6 @@ npm run dev
 Then open the printed `localhost` URL. `npm run build` type-checks
 (`astro check`) and builds the static site to `dist/`; `npm run preview`
 serves that build locally.
-
-## Swap in your résumé
-
-Replace [public/resume.pdf](public/resume.pdf) with the real PDF — same
-filename, same path. It's linked from the hero automatically.
 
 ## Deploy (GitHub Pages)
 
