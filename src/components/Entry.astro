@@ -59,19 +59,19 @@ const { title, subtitle, date, description, bullets, tech, href, site } = Astro.
   </div>
   {description && <p class="description">{description}</p>}
   {
-    tech && tech.length > 0 && (
-      <ul class="tech-tags">
-        {tech.map((t) => (
-          <li>{t}</li>
+    bullets && bullets.length > 0 && (
+      <ul class="bullets">
+        {bullets.map((b) => (
+          <li>{b}</li>
         ))}
       </ul>
     )
   }
   {
-    bullets && bullets.length > 0 && (
-      <ul class="bullets">
-        {bullets.map((b) => (
-          <li>{b}</li>
+    tech && tech.length > 0 && (
+      <ul class="tech-tags">
+        {tech.map((t) => (
+          <li>{t}</li>
         ))}
       </ul>
     )

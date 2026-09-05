@@ -76,7 +76,7 @@ export const contactLinks: ContactLink[] = [
 export const experience: ExperienceEntry[] = [
   {
     org: "ELEMISSION",
-    role: "Software Engineer",
+    role: "Computer Engineer/ Cloud engineer",
     location: "Montréal",
     dates: "2026–Present",
     bullets: [
@@ -103,6 +103,7 @@ export const experience: ExperienceEntry[] = [
       "GitHub Actions",
       "Keycloak",
       "MariaDB",
+      "DevOps",
     ],
   },
   {
@@ -119,6 +120,19 @@ export const experience: ExperienceEntry[] = [
       "Automation in Bash, PowerShell, and Python, −30% manual processing.",
       "SQL and Oracle databases; Agile with TFS and Git.",
     ],
+    tech: [
+      "C++",
+      "Google Test",
+      "Silk",
+      "Jenkins",
+      "Bash",
+      "PowerShell",
+      "Python",
+      "SQL",
+      "Oracle",
+      "TFS",
+      "Git",
+    ],
   },
   {
     org: "Mouvement Desjardins",
@@ -133,6 +147,7 @@ export const experience: ExperienceEntry[] = [
       "Promoted from intern to full-time to technical lead within a year.",
       "Cut code smells 40% via SonarQube; maintained DEV and PROD.",
     ],
+    tech: ["C#", "Python", "Docker", "Azure", "AWS", "SonarQube"],
   },
   {
     org: "ASTP, Polytechnique Montréal",
@@ -143,6 +158,7 @@ export const experience: ExperienceEntry[] = [
       "Maintained the WordPress site serving 10+ student technical societies.",
       "Led a new platform in JavaScript, Spring, HTML, and CSS; mentored a small team.",
     ],
+    tech: ["WordPress", "JavaScript", "Spring", "HTML", "CSS"],
   },
 ];
 
