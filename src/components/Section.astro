@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  id?: string;
+  lead?: string;
+}
+
+const { title, id, lead } = Astro.props;
+---
+
+<section class="section" id={id}>
+  <div class="divider" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2><span class="tick" aria-hidden="true"></span>{title}</h2>
+    {lead && <p class="lead">{lead}</p>}
+    <div class="section-body">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+    scroll-margin-top: var(--nav-h);
+    position: relative;
+  }
+
+  .section:nth-of-type(odd) {
+    background:
+      linear-gradient(180deg, var(--band-alt) 0%, transparent 90px),
+      var(--bg);
+  }
+
+  .section:nth-of-type(even) {
+    background:
+      linear-gradient(180deg, var(--bg) 0%, transparent 90px),
+      var(--band-alt);
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .tick {
+    display: inline-block;
+    width: 3px;
+    height: 0.85em;
+    background: var(--gold);
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  .lead {
+    color: var(--muted);
+    font-size: var(--fs-small);
+    margin-top: 0.4rem;
+  }
+
+  .section-body {
+    margin-top: var(--space-3);
+  }
+</style>

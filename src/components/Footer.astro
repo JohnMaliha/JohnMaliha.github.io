@@ -1,0 +1,29 @@
+---
+import { profile } from "../data/cv";
+import SocialLinks from "./SocialLinks.astro";
+---
+
+<footer class="footer">
+  <div class="divider" aria-hidden="true"></div>
+  <div class="wrap">
+    <p>Designed &amp; Built by {profile.name}</p>
+    <SocialLinks variant="inline" />
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--space-4) 0 var(--space-5);
+  }
+
+  .footer .wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer p {
+    color: var(--muted);
+    font-size: var(--fs-small);
+  }
+</style>

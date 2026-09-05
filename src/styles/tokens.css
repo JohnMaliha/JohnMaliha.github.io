@@ -1,0 +1,48 @@
+:root {
+  /* color */
+  --bg: #0c111d;
+  --surface: #0f1626;
+  --band-alt: #172038;
+  --panel: #0b1120;
+  --text: #e8ebf2;
+  --muted: #929bb0;
+  --line: #212a3e;
+  --gold: #d8b26a;
+  --gold-dim: rgba(216, 178, 106, 0.12);
+  --gold-dim-strong: rgba(216, 178, 106, 0.2);
+  --cyan: #2fe0c9;
+  --cyan-dim: rgba(47, 224, 201, 0.12);
+  --cyan-dim-strong: rgba(47, 224, 201, 0.2);
+  --magenta: #ff4f8b;
+  --magenta-dim: rgba(255, 79, 139, 0.12);
+
+  /* syntax */
+  --syn-keyword: #8fb0e8;
+  --syn-string: #9ed6a3;
+  --syn-number: #e0b877;
+  --syn-comment: #667089;
+
+  /* type */
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --fs-name: clamp(2.5rem, 6vw, 4.25rem);
+  --fs-h2: clamp(1.5rem, 3vw, 1.9rem);
+  --fs-h3: 1.15rem;
+  --fs-lead: clamp(1.05rem, 2vw, 1.2rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-mono: 0.9rem;
+
+  /* layout */
+  --col-max: 860px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+
+  --radius: 10px;
+  --nav-h: 4rem;
+}

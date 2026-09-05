@@ -1,0 +1,130 @@
+---
+import { profile } from "../data/cv";
+
+const TONES = ["gold", "cyan", "magenta"] as const;
+---
+
+<header class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1 class="hero-name">{profile.name}</h1>
+    <p class="hero-tagline">{profile.tagline}</p>
+    <p class="hero-location">{profile.location}</p>
+    <ul class="hero-stats">
+      {
+        profile.stats.map((s, i) => (
+          <li class={`hero-stat tone-${TONES[i % TONES.length]}`}>
+            <span class="hero-stat-value">{s.value}</span>
+            <span class="hero-stat-label">{s.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    padding: var(--space-5) 0 var(--space-4);
+    scroll-margin-top: var(--nav-h);
+    animation: rise 0.6s ease-out both;
+    overflow: clip;
+  }
+
+  .hero-glow {
+    position: absolute;
+    z-index: -1;
+    inset: -20% -10% auto -10%;
+    height: 480px;
+    background:
+      radial-gradient(ellipse 40% 60% at 18% 25%, rgba(47, 224, 201, 0.07), transparent 70%),
+      radial-gradient(ellipse 45% 65% at 55% 10%, rgba(216, 178, 106, 0.08), transparent 70%),
+      radial-gradient(ellipse 35% 55% at 85% 30%, rgba(255, 79, 139, 0.045), transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-name {
+    position: relative;
+    font-size: var(--fs-name);
+    letter-spacing: -0.01em;
+    background: linear-gradient(100deg, var(--text) 60%, var(--gold) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-tagline {
+    font-size: var(--fs-lead);
+    color: var(--text);
+    margin-top: var(--space-2);
+    max-width: 46ch;
+  }
+
+  .hero-location {
+    color: var(--muted);
+    font-size: var(--fs-small);
+    margin-top: var(--space-1);
+  }
+
+  .hero-stats {
+    list-style: none;
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    min-width: 9.5rem;
+  }
+
+  .hero-stat-value {
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  .tone-gold .hero-stat-value {
+    color: var(--gold);
+  }
+
+  .tone-cyan .hero-stat-value {
+    color: var(--cyan);
+  }
+
+  .tone-magenta .hero-stat-value {
+    color: var(--magenta);
+  }
+
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero {
+      animation: none;
+    }
+  }
+</style>

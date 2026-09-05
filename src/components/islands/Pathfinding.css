@@ -1,0 +1,161 @@
+.pf {
+  font-family: var(--font-sans);
+}
+
+.pf-lead {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  margin: 0.3rem 0 var(--space-3);
+}
+
+.pf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.pf-group {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.pf-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-right: 0.5rem;
+  align-self: center;
+}
+
+.pf-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: transparent;
+}
+
+.pf-toggle[aria-pressed="true"] {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.pf-toggle[data-tone="cyan"][aria-pressed="true"] {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: var(--cyan-dim);
+}
+
+.pf-toggle[data-tone="magenta"][aria-pressed="true"] {
+  border-color: var(--magenta);
+  color: var(--magenta);
+  background: var(--magenta-dim);
+}
+
+.pf-toggle:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pf-btn {
+  font-size: 0.85rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.pf-btn:disabled {
+  color: #4a5570;
+  cursor: default;
+}
+
+.pf-btn-primary {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+.pf-btn-primary:disabled {
+  opacity: 0.4;
+}
+
+.pf-speed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.pf-speed input[type="range"] {
+  accent-color: var(--gold);
+}
+
+.pf-board {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.6rem;
+  display: flex;
+  justify-content: center;
+  touch-action: none;
+}
+
+.pf-canvas {
+  max-width: 100%;
+  height: auto;
+  cursor: crosshair;
+  border-radius: 4px;
+}
+
+.pf-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-2);
+}
+
+.pf-status {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.pf-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.pf-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pf-swatch {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+@media (max-width: 560px) {
+  .pf-toolbar {
+    gap: 0.6rem;
+  }
+}

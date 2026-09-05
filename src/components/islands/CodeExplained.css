@@ -1,0 +1,247 @@
+.ce {
+  font-family: var(--font-sans);
+}
+
+.ce-lead {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  margin: 0.3rem 0 var(--space-3);
+}
+
+.ce-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ce-tab {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: transparent;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.ce-tab[aria-selected="true"] {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.ce-tab[data-tone="cyan"][aria-selected="true"] {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: var(--cyan-dim);
+}
+
+.ce-tab[data-tone="magenta"][aria-selected="true"] {
+  border-color: var(--magenta);
+  color: var(--magenta);
+  background: var(--magenta-dim);
+}
+
+.ce-title {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.ce-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--space-2);
+}
+
+.ce-code {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  padding: 0.4rem 0;
+}
+
+.ce-code-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.3rem 0.9rem 0.3rem 0;
+  border-left: 3px solid transparent;
+  transition: background 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.ce-code-line.is-active {
+  border-left-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.ce[data-tone="cyan"] .ce-code-line.is-active {
+  border-left-color: var(--cyan);
+  background: var(--cyan-dim);
+}
+
+.ce[data-tone="magenta"] .ce-code-line.is-active {
+  border-left-color: var(--magenta);
+  background: var(--magenta-dim);
+}
+
+.ce-code-line.is-dim {
+  opacity: 0.4;
+}
+
+.ce-lineno {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #4a5570;
+  width: 1.9rem;
+  text-align: right;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.ce-code-line.is-active .ce-lineno {
+  color: var(--gold);
+}
+
+.ce[data-tone="cyan"] .ce-code-line.is-active .ce-lineno {
+  color: var(--cyan);
+}
+
+.ce[data-tone="magenta"] .ce-code-line.is-active .ce-lineno {
+  color: var(--magenta);
+}
+
+.ce-code-text {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ce-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ce-explain,
+.ce-output {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+}
+
+.ce-output {
+  background: var(--panel);
+  flex: 1;
+}
+
+.ce-panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.ce-output .ce-panel-label {
+  color: var(--muted);
+}
+
+.ce[data-tone="cyan"] .ce-explain .ce-panel-label {
+  color: var(--cyan);
+}
+
+.ce[data-tone="magenta"] .ce-explain .ce-panel-label {
+  color: var(--magenta);
+}
+
+.ce-explain-text {
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.ce-explain-text.is-empty {
+  color: var(--muted);
+}
+
+.ce-output-line {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--syn-string);
+  line-height: 1.7;
+}
+
+.ce-output-empty {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #4a5570;
+}
+
+.ce-output-done {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-top: 0.4rem;
+}
+
+.ce-controls {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: var(--space-2);
+}
+
+.ce-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.ce-btn:disabled {
+  color: #4a5570;
+  cursor: default;
+}
+
+.ce-btn-primary {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+.ce-btn-primary:disabled {
+  opacity: 0.4;
+}
+
+.ce-counter {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .ce-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ce-code-line {
+    transition: none;
+  }
+}

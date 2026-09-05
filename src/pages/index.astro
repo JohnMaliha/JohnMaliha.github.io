@@ -1,0 +1,217 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import Entry from "../components/Entry.astro";
+import Skills from "../components/Skills.astro";
+import Footer from "../components/Footer.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import CodeExplained from "../components/islands/CodeExplained.tsx";
+import Pathfinding from "../components/islands/Pathfinding.tsx";
+import Snake from "../components/islands/Snake.tsx";
+import { profile, experience, projects, education, contactLinks } from "../data/cv";
+
+const email = contactLinks.find((l) => l.icon === "email")!;
+
+const TONES = ["gold", "cyan", "magenta"] as const;
+---
+
+<BaseLayout
+  title="John Maliha — Computer Engineer"
+  description={profile.tagline}
+>
+  <Nav />
+  <Hero />
+
+  <Section
+    id="profile"
+    title="Profile"
+  >
+    <p>{profile.summary}</p>
+    <ul class="highlights">
+      {
+        profile.highlights.map((h, i) => (
+          <li class={`chip chip-${i % 3}`}>{h}</li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section
+    id="what-i-build"
+    title="What I build"
+    lead="A look at how I actually write code, not just a list of buzzwords."
+  >
+    <CodeExplained client:visible />
+  </Section>
+
+  <Section id="experience" title="Experience">
+    <ol class="timeline">
+      {
+        experience.map((job, i) => (
+          <li class={`timeline-item tone-${TONES[i % TONES.length]}`}>
+            <span class="timeline-dot" aria-hidden="true" />
+            <Entry
+              title={job.org}
+              subtitle={job.role}
+              date={job.dates}
+              bullets={job.bullets}
+            />
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section id="projects" title="Projects">
+    <Pathfinding client:visible />
+    <div class="project-list">
+      {
+        projects.map((p) => (
+          <Entry
+            title={p.name}
+            date={p.dates}
+            description={p.description}
+            href={p.repo}
+            site={p.site}
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section id="snake" title="One more thing">
+    <Snake client:visible />
+  </Section>
+
+  <Section id="skills" title="Skills">
+    <Skills />
+  </Section>
+
+  <Section id="education" title="Education">
+    {
+      education.map((e) => (
+        <Entry
+          title={e.org}
+          subtitle={e.program}
+          date={e.dates}
+          description={e.detail}
+        />
+      ))
+    }
+  </Section>
+
+  <Section
+    id="contact"
+    title="Contact"
+    lead="The fastest ways to reach me — feel free to reach out."
+  >
+    <a class="email-cta" href={email.href}>Email me</a>
+    <SocialLinks variant="buttons" />
+  </Section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .project-list {
+    margin-top: var(--space-3);
+  }
+
+  .highlights {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    background: var(--surface);
+  }
+
+  .chip-0 {
+    border-color: rgba(216, 178, 106, 0.4);
+    color: var(--gold);
+    background: var(--gold-dim);
+  }
+
+  .chip-1 {
+    border-color: rgba(47, 224, 201, 0.4);
+    color: var(--cyan);
+    background: var(--cyan-dim);
+  }
+
+  .chip-2 {
+    border-color: rgba(255, 79, 139, 0.4);
+    color: var(--magenta);
+    background: var(--magenta-dim);
+  }
+
+  .timeline {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 1px;
+    top: 1.7rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+
+  .timeline-item.tone-cyan .timeline-dot {
+    background: var(--cyan);
+  }
+
+  .timeline-item.tone-magenta .timeline-dot {
+    background: var(--magenta);
+  }
+
+  .email-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.7rem 1.5rem;
+    margin-bottom: var(--space-3);
+    border-radius: 999px;
+    border: 1px solid var(--gold);
+    background: var(--gold-dim);
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .email-cta:hover {
+    background: var(--gold-dim-strong);
+  }
+</style>

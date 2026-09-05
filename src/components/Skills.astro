@@ -1,0 +1,75 @@
+---
+import { skills } from "../data/cv";
+
+const TONES = ["gold", "cyan", "magenta", "gold"] as const;
+---
+
+<div class="skills">
+  {
+    skills.map((group, i) => (
+      <div class="group">
+        <h3>{group.label}</h3>
+        <ul class={`tags tone-${TONES[i % TONES.length]}`}>
+          {group.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3) var(--space-4);
+  }
+
+  .group h3 {
+    font-size: var(--fs-small);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  .tags {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .tags li {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--muted);
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .tone-cyan li:hover {
+    border-color: rgba(47, 224, 201, 0.4);
+    color: var(--cyan);
+  }
+
+  .tone-magenta li:hover {
+    border-color: rgba(255, 79, 139, 0.4);
+    color: var(--magenta);
+  }
+
+  .tone-gold li:hover {
+    border-color: rgba(216, 178, 106, 0.4);
+    color: var(--gold);
+  }
+
+  @media (max-width: 560px) {
+    .skills {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
