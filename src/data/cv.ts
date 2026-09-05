@@ -10,6 +10,7 @@ export interface ExperienceEntry {
   location: string;
   dates: string;
   bullets: string[];
+  tech?: string[];
 }
 
 export interface ProjectEntry {
@@ -74,10 +75,41 @@ export const contactLinks: ContactLink[] = [
 
 export const experience: ExperienceEntry[] = [
   {
+    org: "ELEMISSION",
+    role: "Software Engineer",
+    location: "Montréal",
+    dates: "2026–Present",
+    bullets: [
+      "Sole developer of the ELEMISSION Portal, a full-stack app managing the entire drill-core scan project lifecycle — upload, validation, approval, and visualization — designed, built, and deployed end to end.",
+      "Architected the back end in C#/.NET and front end in Vue 3 + TypeScript, owning the data model, services, containerized dev/prod setup, and deployment.",
+      "Architected and implemented a cloud infrastructure on AWS using Terraform, including S3, Lambda, Fargate, and EC2 with scoped IAM roles.",
+      "Built a .NET validation pipeline for uploaded .elezip archives: ZIP integrity, folder structure, DZI imagery, JSON/CSV parsing, depth-data consistency.",
+      "Designed an event-driven serverless ingestion flow on AWS: S3 upload triggers a Python Lambda that runs validation as a Fargate task.",
+      "Integrated core-scan visualization and real-time notifications (SignalR/SSE), proxying the admin dashboard server-side to keep auth secure.",
+      "Owned infrastructure and delivery: Docker/Compose, GitHub Actions CI/CD to ECR, EC2 with scoped IAM roles, and Keycloak + MariaDB auth.",
+    ],
+    tech: [
+      "C#/.NET",
+      "Vue 3",
+      "TypeScript",
+      "Python",
+      "AWS Lambda",
+      "Fargate",
+      "S3",
+      "EC2",
+      "ECR",
+      "IAM",
+      "Docker",
+      "GitHub Actions",
+      "Keycloak",
+      "MariaDB",
+    ],
+  },
+  {
     org: "GIRO",
     role: "Solution Developer (Optimization / Software Engineering)",
     location: "Montréal",
-    dates: "2024–present",
+    dates: "Jan 2024–Jan 2026",
     bullets: [
       "C++ optimization algorithms for transit planning, +15% scheduling efficiency.",
       "New C++ features for international transit clients (Golden Gate, NYC, LA, Oakland).",
@@ -133,7 +165,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     name: "Lebanese Festival Platform",
-    dates: "volunteer, 2023",
+    dates: "2023",
     description:
       "Angular + PHP, automated volunteer scheduling, JWT auth.",
     tech: ["Angular", "PHP", "JWT"],
@@ -176,6 +208,7 @@ export const skills: SkillGroup[] = [
     label: "Frameworks",
     items: [
       ".NET",
+      "Vue 3",
       "Angular",
       "React",
       "Spring",
@@ -199,6 +232,8 @@ export const skills: SkillGroup[] = [
       "SonarQube",
       "JFrog",
       "Terraform",
+      "Keycloak",
+      "MariaDB",
     ],
   },
   {
