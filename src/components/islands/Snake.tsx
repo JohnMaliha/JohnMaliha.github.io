@@ -165,11 +165,13 @@ export default function Snake() {
       <div className="sn-header">
         <div className="sn-intro">
           <p className="sn-lead">
-            A Snake clone I built from scratch — grid movement, wall/self collision,
-            and a buffered input queue so a fast key tap can't reverse you into
+            Originally a Python project of mine, this playable version is a
+            browser port with grid movement, wall/self collision, and a
+            buffered input queue so a fast key tap can't reverse you into
             yourself.
           </p>
           <ul className="sn-tags">
+            <li>Python (original)</li>
             <li>React</li>
             <li>TypeScript</li>
             <li>Canvas API</li>

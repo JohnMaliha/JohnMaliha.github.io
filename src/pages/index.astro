@@ -28,14 +28,16 @@ const TONES = ["gold", "cyan", "magenta"] as const;
     id="profile"
     title="Profile"
   >
-    <p>{profile.summary}</p>
-    <ul class="highlights">
-      {
-        profile.highlights.map((h, i) => (
-          <li class={`chip chip-${i % 3}`}>{h}</li>
-        ))
-      }
-    </ul>
+    <div class="profile-card">
+      <p>{profile.summary}</p>
+      <ul class="highlights">
+        {
+          profile.highlights.map((h, i) => (
+            <li class={`chip chip-${i % 3}`}>{h}</li>
+          ))
+        }
+      </ul>
+    </div>
   </Section>
 
   <Section
@@ -51,7 +53,6 @@ const TONES = ["gold", "cyan", "magenta"] as const;
       {
         experience.map((job, i) => (
           <li class={`timeline-item tone-${TONES[i % TONES.length]}`}>
-            <span class="timeline-dot" aria-hidden="true" />
             <Entry
               title={job.org}
               subtitle={job.role}
@@ -73,6 +74,7 @@ const TONES = ["gold", "cyan", "magenta"] as const;
             title={p.name}
             date={p.dates}
             description={p.description}
+            tech={p.tech}
             href={p.repo}
             site={p.site}
           />
@@ -119,6 +121,13 @@ const TONES = ["gold", "cyan", "magenta"] as const;
     margin-top: var(--space-3);
   }
 
+  .profile-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: var(--space-3) var(--space-4);
+  }
+
   .highlights {
     list-style: none;
     margin: var(--space-3) 0 0;
@@ -157,44 +166,25 @@ const TONES = ["gold", "cyan", "magenta"] as const;
   }
 
   .timeline {
-    position: relative;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .timeline::before {
-    content: "";
-    position: absolute;
-    left: 4px;
-    top: 0.5rem;
-    bottom: 0.5rem;
-    width: 1px;
-    background: var(--line);
+  .timeline-item + .timeline-item {
+    margin-top: var(--space-2);
   }
 
-  .timeline-item {
-    position: relative;
-    padding-left: 1.5rem;
+  .timeline-item :global(.entry) {
+    border-left-color: var(--gold);
   }
 
-  .timeline-dot {
-    position: absolute;
-    left: 1px;
-    top: 1.7rem;
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--gold);
-    box-shadow: 0 0 0 4px var(--bg);
+  .timeline-item.tone-cyan :global(.entry) {
+    border-left-color: var(--cyan);
   }
 
-  .timeline-item.tone-cyan .timeline-dot {
-    background: var(--cyan);
-  }
-
-  .timeline-item.tone-magenta .timeline-dot {
-    background: var(--magenta);
+  .timeline-item.tone-magenta :global(.entry) {
+    border-left-color: var(--magenta);
   }
 
   .email-cta {

@@ -5,11 +5,12 @@ interface Props {
   date: string;
   description?: string;
   bullets?: string[];
+  tech?: string[];
   href?: string;
   site?: string;
 }
 
-const { title, subtitle, date, description, bullets, href, site } = Astro.props;
+const { title, subtitle, date, description, bullets, tech, href, site } = Astro.props;
 ---
 
 <article class={`entry${href || site ? " has-link" : ""}`}>
@@ -58,6 +59,15 @@ const { title, subtitle, date, description, bullets, href, site } = Astro.props;
   </div>
   {description && <p class="description">{description}</p>}
   {
+    tech && tech.length > 0 && (
+      <ul class="tech-tags">
+        {tech.map((t) => (
+          <li>{t}</li>
+        ))}
+      </ul>
+    )
+  }
+  {
     bullets && bullets.length > 0 && (
       <ul class="bullets">
         {bullets.map((b) => (
@@ -70,15 +80,16 @@ const { title, subtitle, date, description, bullets, href, site } = Astro.props;
 
 <style>
   .entry {
-    padding: var(--space-3) 0 var(--space-3) 0.9rem;
-    margin-left: -0.9rem;
-    border-bottom: 1px solid var(--line);
-    border-left: 2px solid transparent;
+    padding: var(--space-3);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
     transition: border-color 0.2s ease, background 0.2s ease;
   }
 
-  .entry:last-child {
-    border-bottom: none;
+  .entry + .entry {
+    margin-top: var(--space-2);
   }
 
   .entry.has-link:hover {
@@ -153,6 +164,25 @@ const { title, subtitle, date, description, bullets, href, site } = Astro.props;
     color: var(--muted);
     font-size: var(--fs-small);
     margin-top: 0.35rem;
+  }
+
+  .tech-tags {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tech-tags li {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel);
   }
 
   .bullets {

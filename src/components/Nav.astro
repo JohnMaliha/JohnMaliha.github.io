@@ -18,7 +18,21 @@ const links = [
   <span class="nav-progress" id="nav-progress"></span>
   <div class="wrap nav-inner">
     <a class="nav-mark" href="/#top" aria-label="Back to top">JM</a>
-    <nav class="nav-links" aria-label="Site navigation">
+    <button
+      class="nav-toggle"
+      id="nav-toggle"
+      type="button"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <line class="nav-toggle-bar nav-toggle-bar--top" x1="3" y1="6" x2="21" y2="6" />
+        <line class="nav-toggle-bar nav-toggle-bar--mid" x1="3" y1="12" x2="21" y2="12" />
+        <line class="nav-toggle-bar nav-toggle-bar--bot" x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+    <nav class="nav-links" id="nav-links" aria-label="Site navigation">
       {
         links.map((l) => (
           <a
@@ -100,6 +114,36 @@ const links = [
   }
   document.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  const toggle = document.getElementById("nav-toggle");
+  const navLinksEl = document.getElementById("nav-links");
+
+  function closeMenu() {
+    navLinksEl?.classList.remove("is-open");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.classList.remove("is-open");
+  }
+
+  if (toggle && navLinksEl) {
+    toggle.addEventListener("click", () => {
+      const open = navLinksEl.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.classList.toggle("is-open", open);
+    });
+
+    navLinksEl.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) closeMenu();
+    });
+
+    document.addEventListener("click", (e) => {
+      const target = e.target as Node;
+      if (!navLinksEl.contains(target) && !toggle.contains(target)) closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
 </script>
 
 <style>
@@ -146,6 +190,46 @@ const links = [
     color: var(--gold);
   }
 
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-left: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .nav-toggle svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .nav-toggle-bar {
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    transform-origin: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nav-toggle.is-open .nav-toggle-bar--top {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .nav-toggle.is-open .nav-toggle-bar--mid {
+    opacity: 0;
+  }
+
+  .nav-toggle.is-open .nav-toggle-bar--bot {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
   .nav-links {
     display: flex;
     align-items: center;
@@ -178,5 +262,43 @@ const links = [
     text-decoration: underline;
     text-decoration-color: var(--gold);
     text-underline-offset: 5px;
+  }
+
+  @media (max-width: 700px) {
+    .nav-toggle {
+      display: inline-flex;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      inset: 100% 0 auto 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      max-height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      white-space: normal;
+      mask-image: none;
+      padding: 0.4rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .nav-links.is-open {
+      display: flex;
+    }
+
+    .nav-links a {
+      padding: 0.65rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.is-active {
+      background: var(--gold-dim);
+    }
   }
 </style>

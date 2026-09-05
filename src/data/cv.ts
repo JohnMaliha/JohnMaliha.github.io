@@ -16,6 +16,7 @@ export interface ProjectEntry {
   name: string;
   dates: string;
   description: string;
+  tech: string[];
   repo?: string;
   site?: string;
 }
@@ -119,6 +120,7 @@ export const projects: ProjectEntry[] = [
     dates: "Polytechnique, 2022",
     description:
       "Crazyflie firmware in C, swarm simulation in C++ (ARGoS), Python server + Angular/TypeScript client for real-time monitoring, A*/Dijkstra pathfinding, live map visualization.",
+    tech: ["C", "C++", "ARGoS", "Python", "Angular", "TypeScript"],
     repo: "https://github.com/JohnMaliha/Crazy-Flie-Drone-app",
   },
   {
@@ -126,6 +128,7 @@ export const projects: ProjectEntry[] = [
     dates: "2024",
     description:
       "Python + Terraform on AWS, cloud design patterns (Proxy, Gatekeeper, Trusted Host), Flask on EC2, Docker, MySQL cluster, multithreaded request handling.",
+    tech: ["Python", "Terraform", "AWS", "Flask", "Docker", "MySQL"],
     repo: "https://github.com/JohnMaliha/LOG8415-Final-Project",
   },
   {
@@ -133,18 +136,21 @@ export const projects: ProjectEntry[] = [
     dates: "volunteer, 2023",
     description:
       "Angular + PHP, automated volunteer scheduling, JWT auth.",
+    tech: ["Angular", "PHP", "JWT"],
     site: "https://festivallibanais.org/",
   },
   {
     name: "Collaborative Drawing App",
     dates: "Polytechnique, 2021",
     description: "Express.js + Angular, MongoDB.",
+    tech: ["Express.js", "Angular", "MongoDB"],
     repo: "https://github.com/JohnMaliha/OnlinePaint",
   },
   {
     name: "Veterinary Clinic Platform",
     dates: "2021",
     description: "Angular + PostgreSQL web/mobile platform.",
+    tech: ["Angular", "PostgreSQL"],
     repo: "https://github.com/JohnMaliha/VETOSANSFRONTIERE",
   },
 ];
